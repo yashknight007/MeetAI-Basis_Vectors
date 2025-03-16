@@ -1,0 +1,20 @@
+{
+  "manifest_version": 3,
+  "name": "MEET.AI",
+  "version": "1.0",
+  "description": "AI-powered scheduling for high-volume hiring",
+  "permissions": [
+    "storage",
+    "identity"
+  ],
+  "oauth2": {
+    "client_id": "1040016112040-oqpkdkc6umts3pvpv4l1ojm589u17df1.apps.googleusercontent.com",
+    "scopes": ["https://www.googleapis.com/auth/calendar"]
+  },
+  "action": { 
+    "default_popup": "popup.html", 
+    "default_icon": "icon.png" 
+  },
+  "background": { "service_worker": "background.js" },
+  "icons": { "128": "icon.png" }
+}

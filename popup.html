@@ -1,0 +1,61 @@
+<!-- popup.html -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MEET.AI</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style> body { width: 450px; min-height: 600px; } </style>
+</head>
+<body class="p-6 bg-gray-50 font-sans">
+  <div id="intro" class="space-y-6">
+    <h1 class="text-2xl font-bold text-gray-800 flex items-center">
+      <span class="mr-2">🤖</span>MEET.AI
+    </h1>
+    <p class="text-gray-600">Hello! I’ll help you schedule interviews effortlessly. Who are you?</p>
+    <div class="flex space-x-4">
+      <button id="recruiterBtn" class="flex-1 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition">I’m a Recruiter</button>
+      <button id="candidateBtn" class="flex-1 bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">I’m a Candidate</button>
+    </div>
+  </div>
+
+  <div id="recruiterForm" class="hidden space-y-6">
+    <button id="backToIntroFromRec" class="text-blue-600 hover:underline flex items-center"><span class="mr-1">←</span>Back</button>
+    <h1 class="text-xl font-semibold text-gray-800">Welcome, Recruiter!</h1>
+    <input id="recName" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-300" placeholder="Your name" />
+    <input id="recEmail" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-300" placeholder="Your email" />
+    <input id="recCompany" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-300" placeholder="Your company" />
+    <div class="flex space-x-4">
+      <button id="syncCalendar" class="flex-1 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition">Sync Calendar</button>
+      <button id="resetRecruiters" class="flex-1 bg-red-600 text-white p-3 rounded-lg hover:bg-red-700 transition">Reset Recruiters</button>
+    </div>
+    <p id="recStatus" class="text-sm text-gray-600 italic"></p>
+  </div>
+
+  <div id="candidateForm" class="hidden space-y-6">
+    <button id="backToIntroFromCand" class="text-blue-600 hover:underline flex items-center"><span class="mr-1">←</span>Back</button>
+    <h1 class="text-xl font-semibold text-gray-800">Hi, Candidate!</h1>
+    <input id="candName" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-300" placeholder="Your name" />
+    <input id="candEmail" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-300" placeholder="Your email" />
+    <textarea id="candAvailability" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-300" placeholder="When are you free? (e.g., 'Monday 2 PM', 'Tuesday morning', or 'Friday 10-11 AM')"></textarea>
+    <div class="mt-4">
+      <h3 class="text-lg font-medium text-gray-700">Available Recruiters</h3>
+      <div class="overflow-x-auto">
+        <table id="recruiterTable" class="w-full mt-2 text-sm text-gray-700 border rounded-lg">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="p-2 text-left">Name</th>
+              <th class="p-2 text-left">Company</th>
+              <th class="p-2 text-center">Select</th>
+            </tr>
+          </thead>
+          <tbody id="recruiterList"></tbody>
+        </table>
+      </div>
+    </div>
+    <button id="submitCand" class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">Schedule Interview</button>
+    <p id="candStatus" class="text-sm text-gray-600 italic whitespace-pre-wrap min-h-[40px]"></p>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
