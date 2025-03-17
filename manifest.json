@@ -8,7 +8,7 @@
     "identity"
   ],
   "oauth2": {
-    "client_id": "1040016112040-oqpkdkc6umts3pvpv4l1ojm589u17df1.apps.googleusercontent.com",
+    "client_id": "Your_Google_OAuth2.0_Client_ID",
     "scopes": ["https://www.googleapis.com/auth/calendar"]
   },
   "action": { 
