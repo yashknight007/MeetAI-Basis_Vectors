@@ -1,46 +1,66 @@
-<!-- popup.html -->
 <!DOCTYPE html>
 <html>
 <head>
   <title>MEET.AI</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <style> body { width: 450px; min-height: 600px; } </style>
+  <style>
+    body { width: 450px; min-height: 600px; background: linear-gradient(to bottom, #f9fafb, #e5e7eb); }
+    .bot-mascot { transition: transform 0.3s ease; }
+    .bot-mascot:hover { transform: scale(1.1); }
+    .bot-mascot:active { transform: rotate(10deg); }
+    .speech-bubble { position: relative; background: #fff; border-radius: 8px; padding: 10px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); }
+    .speech-bubble:after { content: ''; position: absolute; bottom: -10px; left: 20px; border-width: 10px 10px 0; border-style: solid; border-color: #fff transparent; }
+    .card { background: white; border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); }
+    button { transition: all 0.2s ease; }
+    button:hover { transform: translateY(-2px); }
+  </style>
 </head>
-<body class="p-6 bg-gray-50 font-sans">
-  <div id="intro" class="space-y-6">
-    <h1 class="text-2xl font-bold text-gray-800 flex items-center">
-      <span class="mr-2">🤖</span>MEET.AI
+<body class="p-6 font-sans">
+  <div id="intro" class="space-y-6 card">
+    <h1 id="title" class="text-2xl font-bold text-gray-800 flex items-center cursor-pointer">
+      <img src="icon.png" class="bot-mascot w-12 h-12 mr-2" alt="MEET.AI Bot">
+      MEET.AI
     </h1>
-    <p class="text-gray-600">Hello! I’ll help you schedule interviews effortlessly. Who are you?</p>
+    <div class="speech-bubble">
+      <p class="text-gray-600 text-sm">Hi! I am your AI scheduler bot. I sync recruiter calendars and book interviews effortlessly!</p>
+    </div>
+    <p class="text-gray-600">Who are you?</p>
     <div class="flex space-x-4">
-      <button id="recruiterBtn" class="flex-1 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition">I’m a Recruiter</button>
-      <button id="candidateBtn" class="flex-1 bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">I’m a Candidate</button>
+      <button id="recruiterBtn" class="flex-1 bg-gradient-to-r from-blue-500 to-blue-700 text-white p-3 rounded-lg shadow-md">I am a Recruiter</button>
+      <button id="candidateBtn" class="flex-1 bg-gradient-to-r from-green-500 to-green-700 text-white p-3 rounded-lg shadow-md">I am a Candidate</button>
     </div>
   </div>
 
-  <div id="recruiterForm" class="hidden space-y-6">
-    <button id="backToIntroFromRec" class="text-blue-600 hover:underline flex items-center"><span class="mr-1">←</span>Back</button>
+  <div id="recruiterForm" class="hidden space-y-6 card">
+    <button id="backToIntroFromRec" class="text-blue-600 hover:underline flex items-center"><span class="mr-1"></span>Back</button>
     <h1 class="text-xl font-semibold text-gray-800">Welcome, Recruiter!</h1>
-    <input id="recName" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-300" placeholder="Your name" />
-    <input id="recEmail" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-300" placeholder="Your email" />
-    <input id="recCompany" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-300" placeholder="Your company" />
+    <input id="recName" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-300 shadow-sm" placeholder="Your name" />
+    <input id="recEmail" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-300 shadow-sm" placeholder="Your email" />
+    <input id="recCompany" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-300 shadow-sm" placeholder="Your company" />
+    <div class="space-y-2">
+      <label class="text-gray-700">Available Hours (optional, default 9 AM - 5 PM):</label>
+      <div class="flex space-x-2">
+        <input id="recStartTime" type="time" class="w-1/2 p-2 border rounded-lg focus:ring-2 focus:ring-blue-300 shadow-sm" value="09:00" />
+        <input id="recEndTime" type="time" class="w-1/2 p-2 border rounded-lg focus:ring-2 focus:ring-blue-300 shadow-sm" value="17:00" />
+      </div>
+    </div>
     <div class="flex space-x-4">
-      <button id="syncCalendar" class="flex-1 bg-blue-600 text-white p-3 rounded-lg hover:bg-blue-700 transition">Sync Calendar</button>
-      <button id="resetRecruiters" class="flex-1 bg-red-600 text-white p-3 rounded-lg hover:bg-red-700 transition">Reset Recruiters</button>
+      <button id="syncCalendar" class="flex-1 bg-gradient-to-r from-blue-500 to-blue-700 text-white p-3 rounded-lg shadow-md">Sync Calendar</button>
+      <button id="resetRecruiters" class="flex-1 bg-gradient-to-r from-red-500 to-red-700 text-white p-3 rounded-lg shadow-md">Reset Recruiters</button>
     </div>
     <p id="recStatus" class="text-sm text-gray-600 italic"></p>
   </div>
 
-  <div id="candidateForm" class="hidden space-y-6">
-    <button id="backToIntroFromCand" class="text-blue-600 hover:underline flex items-center"><span class="mr-1">←</span>Back</button>
+  <div id="candidateForm" class="hidden space-y-6 card">
+    <button id="backToIntroFromCand" class="text-blue-600 hover:underline flex items-center"><span class="mr-1"></span>Back</button>
     <h1 class="text-xl font-semibold text-gray-800">Hi, Candidate!</h1>
-    <input id="candName" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-300" placeholder="Your name" />
-    <input id="candEmail" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-300" placeholder="Your email" />
-    <textarea id="candAvailability" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-300" placeholder="When are you free? (e.g., 'Monday 2 PM', 'Tuesday morning', or 'Friday 10-11 AM')"></textarea>
+    <input id="candName" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-300 shadow-sm" placeholder="Your name" />
+    <input id="candEmail" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-300 shadow-sm" placeholder="Your email" />
+    <textarea id="candAvailability" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-green-300 shadow-sm" placeholder="When are you free? (e.g., 'Monday 2 PM', 'Tuesday morning', or 'Friday 10-11 AM')"></textarea>
     <div class="mt-4">
       <h3 class="text-lg font-medium text-gray-700">Available Recruiters</h3>
       <div class="overflow-x-auto">
-        <table id="recruiterTable" class="w-full mt-2 text-sm text-gray-700 border rounded-lg">
+        <table id="recruiterTable" class="w-full mt-2 text-sm text-gray-700 border rounded-lg shadow-sm">
           <thead class="bg-gray-100">
             <tr>
               <th class="p-2 text-left">Name</th>
@@ -52,7 +72,7 @@
         </table>
       </div>
     </div>
-    <button id="submitCand" class="w-full bg-green-600 text-white p-3 rounded-lg hover:bg-green-700 transition">Schedule Interview</button>
+    <button id="submitCand" class="w-full bg-gradient-to-r from-green-500 to-green-700 text-white p-3 rounded-lg shadow-md">Schedule Interview</button>
     <p id="candStatus" class="text-sm text-gray-600 italic whitespace-pre-wrap min-h-[40px]"></p>
   </div>
 

@@ -4,7 +4,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const recruiterForm = document.getElementById("recruiterForm");
   const candidateForm = document.getElementById("candidateForm");
   const recruiterList = document.getElementById("recruiterList");
+  const title = document.getElementById("title");
   let selectedRecruiterEmail = null;
+
+  // Bot animation
+  function animateBot() {
+    const bot = document.querySelector(".bot-mascot");
+    bot.classList.add("animate-bounce");
+    setTimeout(() => bot.classList.remove("animate-bounce"), 500);
+  }
+  title.addEventListener("click", animateBot);
 
   const showForm = (form) => {
     [intro, recruiterForm, candidateForm].forEach(f => f.classList.add("hidden"));
@@ -45,11 +54,21 @@ document.addEventListener("DOMContentLoaded", () => {
     const name = document.getElementById("recName").value;
     const email = document.getElementById("recEmail").value;
     const company = document.getElementById("recCompany").value;
+    const startTime = document.getElementById("recStartTime").value; // e.g., "08:00"
+    const endTime = document.getElementById("recEndTime").value;     // e.g., "20:00"
     const status = document.getElementById("recStatus");
 
     if (!name || !email || !company) return status.textContent = "Please fill all fields";
+    if (!startTime || !endTime) return status.textContent = "Please specify start and end times";
     status.textContent = "Syncing calendar...";
-    chrome.runtime.sendMessage({ action: "syncRecruiter", name, email, company }, (response) => {
+    chrome.runtime.sendMessage({ 
+      action: "syncRecruiter", 
+      name, 
+      email, 
+      company, 
+      startTime, 
+      endTime 
+    }, (response) => {
       status.textContent = response?.status || "Error: Couldn’t sync";
     });
   });
@@ -60,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
       status.textContent = "Resetting recruiters...";
       chrome.runtime.sendMessage({ action: "resetRecruiters" }, (response) => {
         status.textContent = response?.status || "Error: Couldn’t reset";
-        loadRecruiters(); // Refresh candidate view if visible
+        loadRecruiters();
       });
     }
   });
@@ -102,7 +121,23 @@ document.addEventListener("DOMContentLoaded", () => {
       availability, 
       recruiterEmail: selectedRecruiterEmail 
     }, (response) => {
-      status.textContent = response?.status || "Error: Couldn’t schedule";
+      if (response?.suggestedTime) {
+        if (confirm(`Requested time is booked. Suggested: ${response.suggestedTime}. Approve?`)) {
+          chrome.runtime.sendMessage({
+            action: "confirmCandidate",
+            name,
+            email,
+            recruiterEmail: selectedRecruiterEmail,
+            slot: response.slot
+          }, (finalResponse) => {
+            status.textContent = finalResponse?.status || "Error: Couldn’t schedule";
+          });
+        } else {
+          status.textContent = "Scheduling cancelled. Please try a different time.";
+        }
+      } else {
+        status.textContent = response?.status || "Error: Couldn’t schedule";
+      }
     });
   });
 });
