@@ -9,7 +9,7 @@ To seamlessly sync meetings and schedule them with Recruiters and Candidates wit
 ## ✅ Availability Parsing with NLP 🧠 
 Used Spacy NLP to find the availability of Candidates to schedule with the Recruiters available time slots for meetings.
 
-## ✅ Sends Calendar invites automatiaclly 📅 
+## ✅ Sends Calendar invites automatically 📅 
 Finds available time slots from recruiters free schedule and sends calendar invites to both the parties.
 
 ##  🏗 Tech Stack 
