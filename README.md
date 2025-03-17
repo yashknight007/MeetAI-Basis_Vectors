@@ -48,7 +48,7 @@ python server.py
 - 🚀Voila! Enjoy seamless recruitment..
   
 ## 🎥 Introduction video and Workflow
-🔗 [Watch Demo on Google Drive](https://drive.google.com/file/d/1BXqYQKQtj6_Dl9tASJHDqnewZxcQfngH/view?usp=sharing)
+🔗 [Watch Intro on Google Drive](https://drive.google.com/file/d/1BXqYQKQtj6_Dl9tASJHDqnewZxcQfngH/view?usp=sharing)
 
 ## 🎥 Project Demo
 🔗 [Watch Demo on Google Drive](https://drive.google.com/file/d/1-5PKonYMXWtW-z3t2LXBXcvmsTsUP1ft/view?usp=sharing)
