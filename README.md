@@ -53,6 +53,9 @@ python server.py
 ## 🎥 Project Demo
 🔗 [Watch Demo on Google Drive](https://drive.google.com/file/d/1-5PKonYMXWtW-z3t2LXBXcvmsTsUP1ft/view?usp=sharing)
 
+## Bot Workflow and architecture
+﻿<img src="https://github.com/user-attachments/assets/2a4ad00b-0610-480a-9fe9-84d61bb978c9">
+
 
 
 
