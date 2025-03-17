@@ -13,9 +13,17 @@ Used Spacy NLP to find the availability of Candidates to schedule with the Recru
 Finds available time slots from recruiters free schedule and sends calendar invites to both the parties.
 
 ##  🏗 Tech Stack 
-- **Frontend:** HTML, CSS(Tailwind), JavaScript 
+- **Frontend:** HTML, CSS(Tailwind), JavaScript
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5)
+[![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.x-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
+[![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat-square&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - **Backend:** Flask (Python)
+[![Flask](https://img.shields.io/badge/Flask-2.x-blue?style=flat-square&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
+[![Python](https://img.shields.io/badge/Python-3.x-blue?style=flat-square&logo=python&logoColor=yellow)](https://www.python.org/)
 - **NLP Model:** Spacy
+[![spaCy](https://img.shields.io/badge/spaCy-3.x-green?style=flat-square&logo=spacy&logoColor=white)](https://spacy.io/)
+[![NLP](https://img.shields.io/badge/NLP-natural_language_processing-orange?style=flat-square)](https://en.wikipedia.org/wiki/Natural_language_processing)
 
 ## 🛠 Installation Guide
 🔹 1. Clone the Repository  
@@ -38,9 +46,14 @@ python server.py
 - Enable "Developer mode".
 - Click "Load unpacked" and select the MeetAI-Basis_Vectors folder.
 - 🚀Voila! Enjoy seamless recruitment..
+  
+## 🎥 Introduction video and Workflow
+🔗 [Watch Demo on Google Drive](https://drive.google.com/file/d/1BXqYQKQtj6_Dl9tASJHDqnewZxcQfngH/view?usp=sharing)
 
 ## 🎥 Project Demo
 🔗 [Watch Demo on Google Drive](https://drive.google.com/file/d/1-5PKonYMXWtW-z3t2LXBXcvmsTsUP1ft/view?usp=sharing)
+
+
 
 
 
